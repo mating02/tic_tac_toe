@@ -1,22 +1,43 @@
 const gameBoard = (() => {
-    const field = Array.from({length: 3}, () => new Array(3));
-    return {field};
+    const field = Array.from({ length: 3 }, () => new Array(3));
+    return { field };
 })();
-
 const Player = (marker) => {
     const Tick = (posx, posy) => {
-        if(gameBoard.field[posx][posy] === undefined){
+        if (gameBoard.field[posx][posy] === undefined) {
             gameBoard.field[posx][posy] = marker;
         }
-        if(marker === "X") {
+        if (marker === "X") {
             marker = "O";
         }
-        else{
+        else {
             marker = "X";
         }
     }
-    return {Tick, marker};
+    const getMarker = () => marker;
+    return { Tick, getMarker };
 };
+
+const grid = document.querySelector('.gridBoard');
+const displayController = (() => {
+    const currentPlayer = Player("X");
+    const gridCreate = () => {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                const cell = document.createElement('div');
+                cell.addEventListener('click', () => {
+                    if(gameBoard.field[i][j] === undefined){
+                        cell.textContent = currentPlayer.getMarker();
+                        currentPlayer.Tick(i, j);
+                    }
+                })
+                cell.classList.add('cell');
+                grid.appendChild(cell);
+            }
+        }
+    }
+    return {gridCreate};
+})();
 
 const ChooseRandom = (player) => {
     let randomRow = Math.floor(Math.random() * 3);
@@ -25,15 +46,16 @@ const ChooseRandom = (player) => {
 };
 
 const PlayGame = (type, player) => {
-    const isGameWon = () => {
+    displayController.gridCreate();
+    /* const isGameWon = () => {
         // add const winner
         // look if a player has won
     }
     const isBoardFull = () => {
         let isFull = true;
-        outer: for(let i = 0; i < 3; i++){
-            for(let j = 0; j < 3; j++){
-                if(gameBoard.field[i][j] !== undefined){
+        outer: for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (gameBoard.field[i][j] !== undefined) {
                     isFull = false;
                     break outer;
                 }
@@ -41,17 +63,17 @@ const PlayGame = (type, player) => {
         }
         return isFull;
     }
-    if(isGameWon || isBoardFull){
-        if(isBoardFull){
+    
+    if (isGameWon || isBoardFull) {
+        if (isBoardFull) {
             // display Draw
         }
-        if(isGameWon){
+        if (isGameWon) {
             //display Win
         }
     }
+    */
     // add game dynamics
 };
 
-// add eventListeners and DOM manipulation
-
-// FIRST TO DO: DISPLAY ARRAY AND TIC TAC TOE GRID FIRST!!!
+displayController.gridCreate();
