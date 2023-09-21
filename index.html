@@ -1,17 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"
+        defer></script>
     <script src="script.js" defer></script>
 </head>
+
 <body>
-   <div class="container">
-       <div class="resultText"></div>
-       <div class="gridBoard">
-       </div>
-   </div>
+    <div class="fluid-container">
+        <div class="row bg-dark justify-content-center align-items-center p-4 mb-4">
+            <div class="header">
+                <svg class="icon" width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                    <!-- Vertical Lines -->
+                    <line x1="66.67" y1="0" x2="66.67" y2="200" stroke="white" stroke-width="10" />
+                    <line x1="133.33" y1="0" x2="133.33" y2="200" stroke="white" stroke-width="10" />
+
+                    <!-- Horizontal Lines -->
+                    <line x1="0" y1="66.67" x2="200" y2="66.67" stroke="white" stroke-width="10" />
+                    <line x1="0" y1="133.33" x2="200" y2="133.33" stroke="white" stroke-width="10" />
+
+                    <!-- X's and O's -->
+                    <text x="10" y="50" font-size="60" font-weight="bold" font-family="Arial" fill="#FF5722">X</text>
+                    <text x="77" y="120" font-size="60" font-weight="bold" font-family="Arial" fill="#2196F3">O</text>
+                    <text x="150" y="190" font-size="60" font-weight="bold" font-family="Arial" fill="#FF5722">X</text>
+                </svg>
+                <h1 class="Title">Tic Tac Toe</h1>
+            </div>
+        </div>
+        <div class="gameOptions">
+            <div class="Choosediff">
+                <label for="selectDiff"><span class="diffText">Choose Difficulty:</span></label>
+                <select name="difficulty" id="selectDiff">
+                    <option value="easy" name="option" selected>Easy</option>
+                    <option value="medium" name="option">Medium</option>
+                    <option value="hard" name="option">Hard</option>
+                    <option value="unbeatable" name="option">Impossible</option>
+                </select>
+            </div>
+            <div class="Chooseplayer">
+                <div class="chooseText">Choose Your Player:</div>
+                <div class="playerOptions">
+                    <div class="option X">
+                        <div>Player <span class="redX">X</span></div>
+                    </div>
+                    <div class="option O">
+                        <div>Player <span class="blueO">O</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gameScreen justify-content-center">
+            <div class="flex-container">
+                <div class="resultText">Let's go!</div>
+                <div class="gridBoard">
+                </div>
+                <button class="btn btn-primary w-50 mt-2">Restart<svg class="reloadIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><title>reload</title><path d="M2 12C2 16.97 6.03 21 11 21C13.39 21 15.68 20.06 17.4 18.4L15.9 16.9C14.63 18.25 12.86 19 11 19C4.76 19 1.64 11.46 6.05 7.05C10.46 2.64 18 5.77 18 12H15L19 16H19.1L23 12H20C20 7.03 15.97 3 11 3C6.03 3 2 7.03 2 12Z" /></svg></button>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
+
+<!--
+// Then: add difficulties to js
+// Optional: add winning/ losing animation
+
